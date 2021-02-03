@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Skyeng IL Tech</title>
+  <link href="https://app.iltechcalendar.ru/res/css/superhero/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+  <link href="https://app.iltechcalendar.ru/res/css/superhero/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+  <link href="https://app.iltechcalendar.ru/res/css/main.css" rel="stylesheet" type="text/css" media="all">
+  <link href="https://use.fontawesome.com/da3b569bf2.css" media="all" rel="stylesheet">
+  
+  <style>
+    /* Модальная структура документа */
+    /*общие настройки для всего документа*/
+    html,
+    body {
+      margin: 0;
+      min-height: 180px;
+      padding: 0;
+      width: 580px;
+    }
+    a:link,
+    a:visited {
+      color: #000000;
+      outline: 0;
+      text-decoration: none;
+    }
+    /*задаём ширину картинки*/
+    img {
+      width: 30px; /*ширина изображений*/
+    }
+    .modal-header {
+      align-items: center; /*выравнивание элементов по центру*/
+      border-bottom: 0.5px solid #dadada; /*свойства нижней разделительной линии*/
+      height: 50px;
+    }
+    .modal-content {
+      padding: 0 22px; /*отступы сверху и снизу, сверху и слева*/
+    }
+    .modal-icons {
+      border-top: 0.5px solid #dadada; /*свойства верхней разделительной линии*/
+      height: 50px;
+      width: 100%;
+    }
+    .logo {
+      padding: 16px; /*отступы со всех сторон*/
+    }
+    .logo-icon {
+      vertical-align: text-bottom; /*выравнивание по нижней части текста*/
+      margin-right: 12px; /*задётся отступ элементов от изображения*/
+    }
+    .version {
+      color: #444;
+      font-size: 18px;
+    }
+    .flex-container {
+      display: flex; /*отображает контейнер в виде блочного элемента*/
+      justify-content: space-between; /*равномерное выравнивание элементов*/
+      padding: 10px 22px;
+    }
+    /*задаём настройки для контейнеров с иконками*/
+    .flex {
+      opacity: 1; /*параметр непрозрачности иконок*/
+      width: 120px;
+    }
+    .flex:hover {
+      opacity: 0.4; /*уровень непрозрачности при наведении курсора на элемент*/
+    }
+    .flex .fa {
+      font-size: 40px;
+      color: #2f5876;
+    }
+  </style>
+</head>
+<body>
+  <div class="row" style="background-color: #DF691A !important;">
+    <div class="col-lg-12">
+      <a class="btn" style="color:white;" tooltip="Календарь" flow="down" target="_blank" href="https://app.iltechcalendar.ru/calendar/v2/"><i class="fa fa-calendar"></i></a>
+      <a class="btn" style="color:white;" tooltip="Трекер" flow="down" target="_blank" href="https://app.iltechcalendar.ru/tracker/"><i class="fa fa-clock-o"></i></a>
+      <a class="btn" style="color:white;" tooltip="База знаний" flow="down" target="_blank" href="https://confluence.skyeng.tech/pages/viewpage.action?pageId=56605386"><i class="fa fa-book"></i></a>
+      <a class="btn" style="color:white;" tooltip="Профиль" flow="down" target="_blank" href="https://app.iltechcalendar.ru/profile/"><i class="fa fa-user-circle"></i></a>
+      <button id="myButton" class="btn" style="color:white; float: right;" tooltip="Обновить" flow="left" target="_blank"><i class="fa fa-refresh"></i></button>
+      
+    </div>
+  </div>
+  <div class="row-alt">
+    <div class="col-lg-12">
+      <label>Посмотреть треки</label>
+      <div class="input-group mb-3 hover-group">
+          <div class="btn-group" style="margin-right: 1em;">
+            <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-cloud-download"></i><span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+              <button class="dropdown-item" onclick="Request_Export_To_CSV( 'slack_tickets_mass_data', '1611781200', '1611953999', 'tech-sup-methodists' )">tech-sup-methodists</button>
+              <button class="dropdown-item" onclick="Request_Export_To_CSV( 'slack_tickets_mass_data', '1611781200', '1611953999', 'sales-incidents' )">sales-incidents</button>
+              <button class="dropdown-item" onclick="Request_Export_To_CSV( 'slack_tickets_mass_data', '1611781200', '1611953999', 'overvox-support' )">overvox-support</button>
+            </div>
+          </div>
+              <form id="logs" method="get"></form>
+    <input type="text" autocomplete="off" id="from" form="logs" name="start" class="form-control hasDatepicker" value="28.01.2021" style="display: inline-block;">
+    <input type="text" autocomplete="off" id="to" form="logs" name="end" class="form-control hasDatepicker" value="29.01.2021" style="display: inline-block;">
+    <button type="submit" form="logs" class="btn btn-success"><i class="fa fa-search"></i></button>
+          </div>
+    </div>
+  </div>
+</body>
+<script src="popup.js"></script>
+</html>
